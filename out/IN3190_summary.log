@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.7)  29 NOV 2023 14:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.7)  29 NOV 2023 14:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -583,92 +583,39 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
  [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-
-LaTeX Warning: File `figures/Discrete time/unit_impulse.png' not found on input line 109.
-
-
-/Users/danieltran/Library/CloudStorage/OneDrive-UniversitetetiOslo/H23/IN3190/IN3190_summary/IN3190_summary.tex:109: Package pdftex.def Error: File `figures/Discrete time/unit_impulse.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.109 ...]{figures/Discrete time/unit_impulse.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 109.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-
-LaTeX Warning: File `figures/Discrete time/unit_step_function.png' not found on input line 126.
+<figures/Discrete time/unit_impulse.png, id=107, 573.14125pt x 320.19624pt>
+File: figures/Discrete time/unit_impulse.png Graphic file (type png)
+<use figures/Discrete time/unit_impulse.png>
+Package pdftex.def Info: figures/Discrete time/unit_impulse.png  used on input line 109.
+(pdftex.def)             Requested size: 215.0023pt x 120.11726pt.
+<figures/Discrete time/unit_step_function.png, id=109, 577.15625pt x 177.66376pt>
+File: figures/Discrete time/unit_step_function.png Graphic file (type png)
+<use figures/Discrete time/unit_step_function.png>
+Package pdftex.def Info: figures/Discrete time/unit_step_function.png  used on input line 126.
+(pdftex.def)             Requested size: 215.0023pt x 66.18457pt.
 
 
-/Users/danieltran/Library/CloudStorage/OneDrive-UniversitetetiOslo/H23/IN3190/IN3190_summary/IN3190_summary.tex:126: Package pdftex.def Error: File `figures/Discrete time/unit_step_function.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.126 ...res/Discrete time/unit_step_function.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [2
 
-] [3]
-
-LaTeX Warning: File `figures/Discrete time/unit_ramp_function.png' not found on input line 142.
-
-
-/Users/danieltran/Library/CloudStorage/OneDrive-UniversitetetiOslo/H23/IN3190/IN3190_summary/IN3190_summary.tex:142: Package pdftex.def Error: File `figures/Discrete time/unit_ramp_function.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.142 ...res/Discrete time/unit_ramp_function.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `figures/Discrete time/sinusoidal_sequences.png' not found on input line 164.
-
-
-/Users/danieltran/Library/CloudStorage/OneDrive-UniversitetetiOslo/H23/IN3190/IN3190_summary/IN3190_summary.tex:164: Package pdftex.def Error: File `figures/Discrete time/sinusoidal_sequences.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164 ...s/Discrete time/sinusoidal_sequences.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-LaTeX Warning: File `figures/Discrete time/LTI_time_freq_domain.png' not found on input line 185.
-
-
-/Users/danieltran/Library/CloudStorage/OneDrive-UniversitetetiOslo/H23/IN3190/IN3190_summary/IN3190_summary.tex:185: Package pdftex.def Error: File `figures/Discrete time/LTI_time_freq_domain.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.185 ...s/Discrete time/LTI_time_freq_domain.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+ <./figures/Discrete time/unit_impulse.png>]
+<figures/Discrete time/unit_ramp_function.png, id=132, 420.57124pt x 121.45375pt>
+File: figures/Discrete time/unit_ramp_function.png Graphic file (type png)
+<use figures/Discrete time/unit_ramp_function.png>
+Package pdftex.def Info: figures/Discrete time/unit_ramp_function.png  used on input line 142.
+(pdftex.def)             Requested size: 215.0023pt x 62.08884pt.
+<figures/Discrete time/sinusoidal_sequences.png, id=133, 735.74875pt x 226.8475pt>
+File: figures/Discrete time/sinusoidal_sequences.png Graphic file (type png)
+<use figures/Discrete time/sinusoidal_sequences.png>
+Package pdftex.def Info: figures/Discrete time/sinusoidal_sequences.png  used on input line 164.
+(pdftex.def)             Requested size: 215.0023pt x 66.28944pt.
+ [3{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./figures/Discrete time/unit_step_function.png> <./figures/Discrete time/unit_ramp_function.png> <./figures/Discrete time/sinusoidal_sequences.png>]
+<figures/Discrete time/LTI_time_freq_domain.png, id=149, 642.4pt x 481.8pt>
+File: figures/Discrete time/LTI_time_freq_domain.png Graphic file (type png)
+<use figures/Discrete time/LTI_time_freq_domain.png>
+Package pdftex.def Info: figures/Discrete time/LTI_time_freq_domain.png  used on input line 185.
+(pdftex.def)             Requested size: 215.0023pt x 161.25145pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 176--189
 
@@ -679,36 +626,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--189
 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[5] [6] 
+[4 <./figures/Discrete time/LTI_time_freq_domain.png>] [5] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (out/IN3190_summary.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `IN3190_summary.out' has not changed.
 (rerunfilecheck)             Checksum: 3ACA70C31E8C3BBF8111A9EABBA3C3D7;3366.
  ) 
 Here is how much of TeX's memory you used:
- 20098 strings out of 474278
- 385766 string characters out of 5747797
+ 19960 strings out of 474278
+ 378804 string characters out of 5747797
  1936530 words of memory out of 5000000
- 41995 multiletter control sequences out of 15000+600000
- 572974 words of font info for 79 fonts, out of 8000000 for 9000
+ 41862 multiletter control sequences out of 15000+600000
+ 572661 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,679b,923s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on out/IN3190_summary.pdf (6 pages, 220654 bytes).
+ 75i,12n,79p,679b,935s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on out/IN3190_summary.pdf (5 pages, 352199 bytes).
 PDF statistics:
  239 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 170 words of extra memory for PDF output out of 10000 (max. 10000000)
 
