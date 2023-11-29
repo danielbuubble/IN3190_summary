@@ -1,0 +1,25 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Essential Topics}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Discrete time}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Sine, cosine and exponential functions}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Elementary discrete signals}{2}{subsubsection.1.1.2}%
+\contentsline {paragraph}{Unit impulse}{2}{section*.2}%
+\contentsline {paragraph}{Step function}{2}{section*.4}%
+\contentsline {paragraph}{Ramp function}{3}{section*.6}%
+\contentsline {paragraph}{Periodic sequences}{3}{section*.8}%
+\contentsline {subsubsection}{\numberline {1.1.3}LTI systems, including characteristics via the transformation between input and output}{4}{subsubsection.1.1.3}%
+\contentsline {paragraph}{Linearity:}{4}{section*.10}%
+\contentsline {paragraph}{Time-invariance:}{4}{section*.11}%
+\contentsline {subsection}{\numberline {1.2}Z-transform}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Frequency analysis and DFT}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Filter design}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Sampling and reconstruction}{5}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Additional Topics}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Discrete time}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Symmetrical signals}{5}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}LTI systems and characteristics}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Convolution and correlation}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Z-transform}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Frequency analysis and DFT}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Filter design}{5}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Sampling and reconstruction}{5}{subsection.2.7}%
