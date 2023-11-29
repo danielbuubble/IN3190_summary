@@ -9,6 +9,7 @@
 \usepackage[english]{babel}
 \usepackage{wrapfig}
 \usepackage{fancyhdr}
+\usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{lastpage}
@@ -193,7 +194,113 @@ LTI system can also be characterized in the frequency domain by the system's tra
 
 \subsection{Filter design}
 
+\subsubsection{Advantages/Disadvantages of FIR and IIR filters}
+\paragraph{Advantages, FIR filters:}
+\begin{itemize}
+    \item Can have exact linear phase, which makes h(n) zero points symmetric about $|z| = 1$
+    \item  Filter structures are always stable for quantized coefficients.
+    \begin{itemize}
+        \item Stable IIR filters can become unstable due to rounding errors in coefficients.
+    \end{itemize}
+    \item Design methods are generally linear. 
+    \item Start transient has finite length.
+    \item Can be realized efficently in HW (but not as efficient as IIR filters)
+\end{itemize}
+
+\paragraph{Disadvantages, FIR filters:}
+
+
+Generally require a higher order than IIR filters to meet the same specifications. This often ensure the FIR filter having greater calculation burden/complexity and larger group delay than the corresponding IIR filter.
+
+\subsubsection{Common ways to design IIR filters}
+\begin{itemize}
+    \item Specify the filter as a analog/continuous time (CT) equivalent to the dicrete IIR filter you want to design.
+    \item Design the analog lowpass filter in continuous time.
+    \item Convert the analog lowpass filter to a digital filter using filter transformation.
+    \item Convert the digital lowpass filter to the desired filter using a frequency band transformation.
+    \item Convert the digital filter to a discrete time (DT) filter (From s-domain to z-domain).
+    \item You could also just use an optimization algorithm (e.g. least-square method)
+\end{itemize}
+
+\paragraph{Note on standard approximations for IIR filter design:}
+\begin{itemize}
+    \item Conversion of the digital filter specification to an anolog low-pass filter specification
+    \item Determination of analog low-pass transfer function $H_a(s)$
+    \item Transformation of $H_a(s)$ to the desired digital transfer function $G(z)$
+    This method is preferred because:
+    \begin{itemize}
+        \item Approximation of an analog transfer function is well established and suitable.
+        \item Closed expressions for the analog approximation are often obtained.
+        \item Large tables for analog filter design are available.
+        \item In many cases, digital simulation of an analogue system is sought, i.e. the analogue specification exist.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Typical IIR filters}
+
+\subsubsection{Common ways to design FIR filters}
+
+\subsubsection{Window functions and the consequences of applying them}
+
+\subsubsection{Linear phase and linear-phase filters}
+
+\subsubsection{Grapihcal representation of filter structures and operations}
+
+\subsubsection{Gibb's phenomenon}
+
 \subsection{Sampling and reconstruction}
+\subsubsection{Sampling theorem}
+The sampling frequency $\Omega_T = 2\Omega_H$ is called the Nyquist frequency. If this term is satisfied, then the original signal can be recovered from the sampled signal. In practice we often use oversampling (sampling at a higher rate than the Nyquist frequency) to get an appropiate reconstruction.
+\subsubsection{Synthesizing an arbitrary signal as a sum of unit impulses}
+
+Sampling corresponds to multiplying with a Dirac comb with distance $T$ between the unit impulses.
+In the Fourier domain, this corresponds to convolving with a Dirac comb with distance $F_T$ between
+scaled unit impulses. (The distance is $\Omega_T$ if we look at the angular frequency axis)
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Sampling and reconstruction/Sampling_dirac_impulses.png}
+    \caption{Sampling with dirac impulses}
+    \label{fig:sampling_dirac_impulses}
+\end{figure}
+\begin{equation}
+    x_p (t) = x_a (t) III_T (t) = \sum_{n=-\infty}^{\infty} x_a (t) \delta (t - nT) = \sum_{n=-\infty}^{\infty} x_a (nT) \delta (t - nT) \triangleq x(n)
+\end{equation}
+
+\clearpage
+\subsubsection{Sampling of band-limited signals}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Sampling and reconstruction/sampling_band_lim_signal.png}
+    \caption{Periodic sampling in freq. domain}
+    \label{fig:sampling_band_lim_signal}
+\end{figure}
+The reconstructed signal will repeat itself in the frequency domain. As long the sampling frequency ($\Omega_T$)is equal or greater than the Nyquist rate ($2\Omega_H$), we will be able to seperate the original signal from the aliases. The reconstruction in fig. \ref{fig:sampling_band_lim_signal} can be written as a convolution:
+\begin{equation}
+    x_r (t) = \sum_{n=-\infty}^{\infty} x_a (nT) g_r (t - nT) 
+\end{equation}
+
+Where $g_r (t)$ is the interpolation reconstruction function (I.e. impulse response). The 
+
+\subsubsection{Ideal reconstruction}
+
+The fundamental copy of the Fourier-domain representation of the sampled signal can be found by the 'ideal' filter for the convolution operation is: 
+\begin{equation}
+    G_r (j\Omega) = \bigg\{ \begin{matrix}
+        T, & |\Omega| \leq \Omega_T /2 \\
+        0, & |\Omega| > \Omega_T / 2
+    \end{matrix}
+\end{equation}
+
+This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier domain representation equals the original Fourier domain representation).
+
+\clearpage
+\subsubsection{Upsampling and downsampling}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/Sampling and reconstruction/sampling_examples.png}
+    \caption{Example of over/undersampling}
+    \label{fig:sampling_example}
+\end{figure}
 
 \section{Additional Topics}
 \subsection{Discrete time}
