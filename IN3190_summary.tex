@@ -426,6 +426,26 @@ For a real linear phase FIR filter with a zero $z_1$, you also have zeros at $z_
 
 \subsubsection{Graphical representation of filter structures and operations}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Filter design/structure_forms.png}
+    \caption{Example of a filter structure}
+    \label{fig:filter_structure}
+\end{figure}
+
+\paragraph{Operator notation:} The $z^{-1}$ blocks in fig.~\ref{fig:filter_structure} are called \textbf{delay operators} and are used to represent the delay of one sample. I.e. $x[n-1] \begin{smallmatrix} \mathcal{Z} \\ \longleftrightarrow \end{smallmatrix} z^{-1}X(z)$
+
+\paragraph{How is it made} Given a transfer function: \[H(z) = \frac{Y(z)}{X(z)} = (b_0 + b_1z^{-1} \ldots) \left( \frac{1}{1-a_1z^{-1} \ldots} \right) = B(z)\frac{1}{A(z)}\]
+Note we have two forms, \textbf{direct form I} and \textbf{direct form II}. The later saves one unit delay.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/Filter design/connected_systems.png}
+    \caption{Illustration of connected systems}
+    \label{fig:connected_systems}
+\end{figure}
+Figure~\ref{fig:connected_systems} shows how a equivalent transfer function of systems in cascade is the product of the individual transfer functions. The equivalent transfer function of systems in parallel is the sum of the individual transfer functions.
+
 \subsubsection{Gibb's phenomenon}
 
 \begin{itemize}
@@ -468,12 +488,15 @@ scaled unit impulses. (The distance is $\Omega_T$ if we look at the angular freq
     \caption{Periodic sampling in freq. domain}
     \label{fig:sampling_band_lim_signal}
 \end{figure}
-The reconstructed signal will repeat itself in the frequency domain. As long the sampling frequency ($\Omega_T$)is equal or greater than the Nyquist rate ($2\Omega_H$), we will be able to seperate the original signal from the aliases. The reconstruction in fig. \ref{fig:sampling_band_lim_signal} can be written as a convolution:
+
+\paragraph{Important part:} A signal that is limited to a band $F \in [F_L,F_H]$ is a bandpass with bandwidth $B = F_H - F_L$. This signal can be perfectly reconstructed if $2B \le F_T \le 4B$
+
+\paragraph{Not important}The reconstructed signal will repeat itself in the frequency domain. As long the sampling frequency ($\Omega_T$)is equal or greater than the Nyquist rate ($2\Omega_H$), we will be able to seperate the original signal from the aliases. The reconstruction in fig. \ref{fig:sampling_band_lim_signal} can be written as a convolution:
 \begin{equation}
     x_r (t) = \sum_{n=-\infty}^{\infty} x_a (nT) g_r (t - nT) 
 \end{equation}
 
-Where $g_r (t)$ is the interpolation reconstruction function (I.e. impulse response). The 
+Where $g_r (t)$ is the interpolation reconstruction function (I.e. impulse response). 
 
 \subsubsection{Ideal reconstruction}
 
