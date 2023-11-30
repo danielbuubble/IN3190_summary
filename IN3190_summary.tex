@@ -188,7 +188,7 @@ LTI system can also be characterized in the frequency domain by the system's tra
     \label{fig:lti_relationship}
 \end{figure}
 
-\subsubsection{Difference equations for system description} %Ask why M
+\subsubsection{Difference equations for system description / LTI systems written on general summation notation with coefficients and time offsets} %Ask why M
 General description of relationship between input x[n] and output y[n] of a LTI system in the time domain (n domain): (M amount of zeroes) (N amount of poles)
 \begin{equation}
     y[n] = -\sum_{k=1}^{N}a_ky[n-k] + \sum_{k=0}^{M}b_xx[n-k]
@@ -198,8 +198,9 @@ General description of relationship between input x[n] and output y[n] of a LTI 
     \item IIR (infinite impulse response): at least one $a_k \neq 0$
 \end{itemize}
 The value N represent the order of the difference equation and corresponds to the memory of the system being represented. Because this equations relies on past values of the output, in order to compute a numerical solution, certain past outputs, referred to as the initial conditions, must be known.
-
-\subsubsection{LTI systems written on general summation notation with coefficients and time offsets}
+\\
+\textbf{$a_k$} and \textbf{$b_k$} are the coefficients of the difference equation. 
+Time offset is represented by the index k.
 
 \subsubsection{Casuality}
 In control theory, a causal system is a system where the output depends on past and current inputs, but not future inputs. The idea that the output of function at any time depends only on past and present values of input is defined by the property commonly referred to as casusality. 
@@ -214,6 +215,40 @@ Causal stable filters have all poles inside $|z| = 1$.
 
 \subsubsection{FIR / IIR}
 \paragraph{FIR:} Finite impulse response. The output from a FIR filter is calculated by the basis of the input samples and the proceding input. A FIR filter is always stable because the values from the output does not effect calculations. 
+(Can be thought of as an op-amp without feedback loop)
+
+
+\paragraph{IIR:} Infinite impulse response. The output from a IIR filter is calculated by the basis of the input samples, the proceding input and the previous output. A IIR filter can be unstable because the values from the output effects the calculations. 
+(Can be thought of as an op-amp with feedback loop)
+
+\subsubsection{Convolution}
+The resulting signal y(n) represents the amount of overlap between x and h at each point in time, and can be used for a variety of purposes, such as filtering, smoothing, deconvolution, and image processing. For example, if we convolve a signal with a smoothing kernel, we can reduce noise and make the signal smoother.
+\\
+The summation:
+\begin{equation}
+    y(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k) = \sum_{k=-\infty}^{\infty}x(n-k)h(k)
+\end{equation}
+is the convolution of $x(n)$ and $h(n)$
+
+\paragraph{Properties of convolution:}
+\begin{itemize}
+    \item \textbf{Commutative:} $x(n) \ast h(n) = h(n) \ast x(n)$
+    \item \textbf{Associative:} $x(n) \ast \{h_1(n) \ast h_2(n)\} = \{x(n) \ast h_1(n)\} \ast h_2(n)$
+    \item \textbf{Distributive:} $x(n) \ast \{h_1(n) + h_2(n)\} = x(n) \ast h_1(n) + x(n) \ast h_2(n)$
+    \\
+    where $\ast$ is the convolution operator
+    \item Can also use the matrix method to calculate convolution
+\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/Discrete time/graphic_conovlution.png}
+    \caption{Convolution}
+    \label{fig:convolution}
+\end{figure}
+
+\subsubsection{Sampling frequency and sampling interval. Digital frequency / physical frequency, as well as
+corresponding digital angular frequency / physical angular frequency and how to map between these
+given a sampling interval T = 1/FT}
 \subsection{Z-transform}
 
 \subsection{Frequency analysis and DFT}
@@ -450,7 +485,7 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
     \item FIR filter has to have symmetrical coefficients to have linear phase.
     \item The placement of the zero can give us the magnitude plot. And from the magnitude plot we can see the frequency spectrum. 
     \item Three ways to see if it is causal, ROC or difference equation
-    \item From ROC, it is causal if 
+    \item From ROC, it is causal if it contains infinity
     \item For n<0, if h(n) (Impulse response) have a postive value, it it anti-causal.
 \end{itemize}
 \end{document}
