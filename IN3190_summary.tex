@@ -312,7 +312,14 @@ Of the prototype analog filters showcased here, \textbf{Elliptic gives best perf
 FIR filter design is often based on a approximation of a specified magnitude response. The design of a FIR filter of order $M-1$ can be found by either the length $M$ impulse response samples in $\{ h(n) \}$ or the $M$ samples of the frequency response in $\{ H(e^{j\omega}) \}$.
 \begin{itemize}
     \item \textbf{Window method:} Multiply the ideal impulse response with a window function to get the desired impulse response.
-    \item \textbf{Frequency sampling method:} Sample the frequeny response (DTFT) of the desired filter by assuming it to be the DFT. Then use the inverse DFT to get the desired coefficients. This can work well for in the points sampled, but between the points the frequency response can not be controlled.
+    \item \textbf{Frequency sampling method:} Sample the frequeny response (DTFT) of the desired filter by assuming it to be the DFT. Then use the inverse DFT to get the desired coefficients. This can work well for in the points sampled, but between the points the frequency response can not be controlled. Transition samples from tables can improve this.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/Filter design/frequency_sampling_method.png}
+        \caption{Visual representation of the frequency sampling method}
+        \label{fig:freq_sampling_method}
+    \end{figure}
+    
     \item \textbf{Optimization method:} Use algorithms (e.g. Parks-McClellan) or optimization techniques like least squares to iteratively refine the filter coefficients by minimizing the error between the desired and actual frequency response.
 \end{itemize}
 
@@ -349,14 +356,30 @@ This method also lacks precise control of $w_p$ and $w_s$.
 \end{itemize}
 
 \subsubsection{Linear phase and linear-phase filters}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/Filter design/freq_sampling_method.png}
-    \caption{Visual representation of the frequency sampling method}
-    \label{fig:freq_sampling_method}
-\end{figure}
-
-\subsubsection{Grapihcal representation of filter structures and operations}
+A LTI system has a \textbf{linear phase} if:
+\begin{equation}
+    H(e^{j\omega}) = |H(e^{j\omega})|e^{-j\alpha\omega}
+\end{equation}
+Or a \textbf{generalized linear phase} if:
+\begin{equation}
+    H(e^{j\omega}) = A(e^{j\omega})e^{-j(\alpha\omega - \beta)}
+\end{equation}
+Where $A(e^{j\omega})$ is a real-valued function of $\omega$ and $\beta \in \mathfrak{R} $
+\\
+\\
+If your system needs to both be \textbf{causal} and have \textbf{linear phase}, you can only use \textbf{FIR}.
+\\
+\\
+A sufficient condition for a real-valued FIR filter to have generalized linear phase is that its impulse response $h(n)$ is symmetric or antisymmetric.
+\begin{itemize}
+    \item \textbf{Symmetric:} $h(n) = h(M-1-n), \quad n=0,1,\ldots,M-1$
+    \\
+    Then $\alpha = (M-1)/2$ and $\beta = 0 \ \vee \ \pi$
+    \item \textbf{Antisymmetric:} $h(n) = -h(M-1-n), \quad n=0,1,\ldots,M-1$
+    \\
+    Then $\alpha = (M-1)/2$ and $\beta = \pi/2 \ \vee \ 3\pi/2$
+\end{itemize}
+\subsubsection{Graphical representation of filter structures and operations}
 
 \subsubsection{Gibb's phenomenon}
 
