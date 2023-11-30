@@ -95,7 +95,7 @@
     \end{equation}
 \subsubsection{Elementary discrete signals}
 \paragraph{Unit impulse} %Spør gruppelærer om plot fra forelesning
-Also known as the dirac delta function.
+Also known as the dirac delta function. Shifted to the left when its negative and to the right when its positive. Can be used to find H(n) in a system. If the input $x(n) = \delta(n)$, then the output $y(n) = h(n)$.
 \begin{equation}
     \delta[n] = \begin{cases}
         1, & n = 0 \\
@@ -189,9 +189,9 @@ LTI system can also be characterized in the frequency domain by the system's tra
 \end{figure}
 
 \subsubsection{Difference equations for system description} %Ask why M
-General description of relationship between input x[n] and output y[n] of a LTI system in the time domain (n domain):
+General description of relationship between input x[n] and output y[n] of a LTI system in the time domain (n domain): (M amount of zeroes) (N amount of poles)
 \begin{equation}
-    y[n] = -\sum_{k=1}^{N}a_ky[n-k] + \sum_{k=0}^{M}b_xy[n-k]
+    y[n] = -\sum_{k=1}^{N}a_ky[n-k] + \sum_{k=0}^{M}b_xx[n-k]
 \end{equation}
 \begin{itemize}
     \item FIR (finite impulse response): all $a_k = 0$
@@ -202,7 +202,7 @@ The value N represent the order of the difference equation and corresponds to th
 \subsubsection{LTI systems written on general summation notation with coefficients and time offsets}
 
 \subsubsection{Casuality}
-In control theory, a causal system is a system where the output depens on past and current inputs, but not future inputs. The idea that the output of function at any time depends only on past and present values of input is defined by the property commonly referred to as casusality. 
+In control theory, a causal system is a system where the output depends on past and current inputs, but not future inputs. The idea that the output of function at any time depends only on past and present values of input is defined by the property commonly referred to as casusality. 
 
 \subsubsection{Stability and the related convergence for the DTFT}
 A linear system is called BIBO (Bounded-input bounded output) stable if its output will stay bounded for any bounded input. 
@@ -213,7 +213,7 @@ A linear system is called BIBO (Bounded-input bounded output) stable if its outp
 Causal stable filters have all poles inside $|z| = 1$.
 
 \subsubsection{FIR / IIR}
-\paragraph{FIR:}
+\paragraph{FIR:} Finite impulse response. The output from a FIR filter is calculated by the basis of the input samples and the proceding input. A FIR filter is always stable because the values from the output does not effect calculations. 
 \subsection{Z-transform}
 
 \subsection{Frequency analysis and DFT}
@@ -449,4 +449,13 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
 \subsection{Filter design}
 
 \subsection{Sampling and reconstruction}
+
+\paragraph{Notes from group session:}
+\begin{itemize}
+    \item x(n) is input, y(n) is ouput and h(n) is impulse response. 
+    \item FIR filter has to have symmetrical coefficients to have linear phase.
+    \item The placement of the zero can give us the magnitude plot. And from the magnitude plot we can see the frequency spectrum. 
+    \item Three ways to see if it is causal, ROC or difference equation
+    \item For n<0, if h(n) (Impulse response) have a postive value, it it anti-causal.
+\end{itemize}
 \end{document}
