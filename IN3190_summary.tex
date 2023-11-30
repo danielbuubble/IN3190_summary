@@ -230,7 +230,7 @@ Causal stable filters have all poles inside $|z| = 1$.
     \end{itemize}
     \item Design methods are generally linear. 
     \item Start transient has finite length.
-    \item Can be realized efficently in HW (but not as efficient as IIR filters)
+    \item Can be realized efficently in HardWare (but not as efficient as IIR filters)
 \end{itemize}
 
 \paragraph{Disadvantages, FIR filters:}
@@ -249,8 +249,11 @@ Generally require a higher order than IIR filters to meet the same specification
 \end{itemize}
 
 \paragraph{Note on standard approximations for IIR filter design:}
+Design method involves directly designing the filter coefficients based on a mathematical representation of the desired frequency response. This approach provides more control over the filter characteristics but requires a deeper understanding of filter design principles. The approximation method involves approximating an ideal frequency response by specifying certain filter characteristics, such as filter type, cutoff frequency, and filter order. The goal is to find a set of filter coefficients that can closely match the desired response. Some of the common approximation methods are Butterworth, Chebyshev, and elliptic filters. 
+
+A rough overview of the common method for approximation entails:
 \begin{itemize}
-    \item Conversion of the digital filter specification to an anolog low-pass filter specification
+    \item Conversion of the digital filter specification to an analog low-pass filter specification
     \item Determination of analog low-pass transfer function $H_a(s)$
     \item Transformation of $H_a(s)$ to the desired digital transfer function $G(z)$
     This method is preferred because:
@@ -262,17 +265,120 @@ Generally require a higher order than IIR filters to meet the same specification
     \end{itemize}
 \end{itemize}
 
+
+
 \subsubsection{Typical IIR filters}
+When using the approximation method, you have the desired response given as:
+\begin{equation}
+    |H_d (j\Omega)|^2 = \begin{cases}
+        1, & 0 \leq |\Omega| \leq \Omega_c \\
+        0, & |\Omega| > \Omega_c
+    \end{cases}
+\end{equation}
+
+And the approximation as:
+\begin{equation}
+    |H_c (j\Omega)|^2 = \frac{1}{1 + V^2(\Omega)}
+\end{equation}
+Where $V^2(\Omega) << 1$ for $|\Omega| \leq \Omega_c$ and $V^2(\Omega) >> 1$ for $|\Omega| > \Omega_c$.
+
+The $V^2(\Omega)$ is called the \textbf{approximation function} and is used to characterize the approximation. Different $V^2(\Omega)$ gives different approximations types.
+
+\paragraph{Butterworth filter:}
+\begin{itemize}
+    \item $ |H(\Omega)|^2 = \frac{1}{1+\left(\frac{\Omega}{\Omega_c}\right)^{2N}}$, where $N$ is the filter order.
+    \item Is flat in the passband, and rolls off towards zero in the stopband.
+    \item In a logarithmic plot (bode plot), the response slopes off linearly towards $-\infty$.
+    \item Butterworth filters have a monotonically changing magnitude response with frequency $\omega$.
+\end{itemize}
+
+\paragraph{Chebyshev filter:}
+\begin{itemize}
+    \item $|H(\Omega)|^2 = \frac{1}{1 + \epsilon^2 T_N^2 (\Omega / \Omega_c)}$, where $T_N$ is the Nth order Chebyshev polynomial ().
+    \item The Chebyshev filter has a ripple in either the passband or stopband, but a steeper roll-off than the Butterworth filter.
+    \item Type I Chebyshev filter is an all pole filter and has equiripple (the ripples are of same height) in the passband and a monotonically decreasing stopband.
+    \item Type II Chebyshev filter consists of both poles and zeros, with a monotonically decreasing passband and equiripple in the stopband.
+\end{itemize}
+
+\paragraph{Elliptic filter:}
+\begin{itemize}
+    \item $|H(\Omega)|^2 = \frac{1}{1 + \epsilon^2 U_N^2 (\Omega / \Omega_c ) }$, where $U_N(\Omega / \Omega_c)$ is a Jacobian elliptic function.
+    \item The elliptic filter has a ripple in both the passband and stopband.
+    \item The elliptic filter has both poles and zeros.
+    \item Compared to the two other types, the elliptic filter has the narrowest transition band for a given $N$, cutoff frequency $\Omega_p$ and pass/stop-band ripples.
+\end{itemize}
+
+\paragraph{A small summary so far:}
+Of the prototype analog filters showcased here, \textbf{Elliptic gives best performance in the magnitude-squared response}, but have a highly nonlinear phase response in the passband (Often bad in application). 
+
+\textbf{Butterworth filters} are on the other end with low performance in the magnitude-squared response, but have \textbf{flat magnitude response in the passband and a fairly linear phase in the passband}. They do however require more poles ($N$) to achieve the same stopband specification.
+
 
 \subsubsection{Common ways to design FIR filters}
+These are the ones mentioned in the lecture notes:
+\begin{itemize}
+    \item \textbf{Window method:} Multiply the ideal impulse response with a window function to get the desired impulse response.
+    \item \textbf{Frequency sampling method:} Sample the frequeny response (DTFT) of the desired filter by assuming it to be the DFT. Then use the inverse DFT to get the desired coefficients.
+    \item \textbf{Optimization method:} Use algorithms (e.g. Parks-McClellan) or optimization techniques like least squares to iteratively refine the filter coefficients by minimizing the error between the desired and actual frequency response.
+\end{itemize}
 
 \subsubsection{Window functions and the consequences of applying them}
+Window functions $w(n)$ are of finite lengths and symmetric around their midpoints. 
+\begin{equation}
+    \underbrace{h(n)}_{\text{Desired filter}} = \underbrace{h_d (n)}_{\text{Ideal filter}} \ast \ w(n)
+\end{equation}
+Or in the frequency domain:
+\begin{equation}
+    H(e^{j\omega}) =  H_d (e^{j\omega}) \circledast W(e^{j\omega}) = \frac{1}{2\pi} \int_{-\pi}^{\pi} H_d (e^{j\nu}) W(e^{j(\omega - \nu)}) d\nu
+\end{equation}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Filter design/lowpass_tolerance_diagram.png}
+    \caption{Example of a lowpass filter tolerance diagram}
+    \label{fig:tolerance_diagram}
+\end{figure}
+
+How well $H(e^{j\omega})$ approximates $H_d (e^{j\omega})$ is determined by:
+\begin{itemize}
+    \item The width of the main lobe of $W(e^{j\omega})$
+    \item Maximum side lobe level of $W(e^{j\omega})$
+\end{itemize}
+
+This method also lacks precise control of $w_p$ and $w_s$.
+
+\paragraph{Some characteristics of window spectrum:}
+\begin{itemize}
+    \item Pass and stopband ripples are not constant
+    \item Stopband level (filter) typically less than peak sidelobe level (PSL) to window. 
+    \item PSL, peak passband ripple and passband attenuation $\approx$ independent of $N$.
+    \item Width of transition band $\approx$ given by main lobe width window, $F_{WS} \approx C/N$ where $C$ is a constant for each window.
+\end{itemize}
 
 \subsubsection{Linear phase and linear-phase filters}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Filter design/freq_sampling_method.png}
+    \caption{Visual representation of the frequency sampling method}
+    \label{fig:freq_sampling_method}
+\end{figure}
 
 \subsubsection{Grapihcal representation of filter structures and operations}
 
 \subsubsection{Gibb's phenomenon}
+
+\begin{itemize}
+    \item Oscillatory behavior in the magnitude response of causal FIR filters found by truncating the filter coefficients of an ideal filter.
+    \item If you increase the length of the filter, the number of ripple-peaks will increase in both passband and stopband and the width of these peaks decrease equivalent.
+    \item Given the same weighting function, the highest ripple-peak will be unchanged. 
+\end{itemize}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Filter design/gibbs_effekt.png}
+    \caption{Example of Gibb's effect in a lowpass filter}
+    \label{fig:gibbs_effect}
+\end{figure}
+
+\clearpage
 
 \subsection{Sampling and reconstruction}
 \subsubsection{Sampling theorem}
