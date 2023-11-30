@@ -223,7 +223,7 @@ Causal stable filters have all poles inside $|z| = 1$.
 \subsubsection{Advantages/Disadvantages of FIR and IIR filters}
 \paragraph{Advantages, FIR filters:}
 \begin{itemize}
-    \item Can have exact linear phase, which makes h(n) zero points symmetric about $|z| = 1$
+    \item Can be designed to have exact linear phase, which makes h(n) zero points symmetric about $|z| = 1$
     \item  Filter structures are always stable for quantized coefficients.
     \begin{itemize}
         \item Stable IIR filters can become unstable due to rounding errors in coefficients.
@@ -235,8 +235,21 @@ Causal stable filters have all poles inside $|z| = 1$.
 
 \paragraph{Disadvantages, FIR filters:}
 
-
 Generally require a higher order than IIR filters to meet the same specifications. This often ensure the FIR filter having greater calculation burden/complexity and larger group delay than the corresponding IIR filter.
+
+\paragraph{Advantages, IIR filters:}
+\begin{itemize}
+    \item In IIR filter design, the possibility of converting a analog filter to a digital filet gives them several advantages:
+    \begin{itemize}
+        \item Analog approximation techniques are highly advanced.
+        \item They usually yield closed-form solutions.
+        \item Extensice tables are available for analog filters.
+        \item Many applications require digital simulations of analog system.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Disadvantages, IIR filters:}
+We have no control over the phase characteristics of a IIR filter, we only know it cannot have linear phase). I.e. IIR filters have only magnitude-only deigns.
 
 \subsubsection{Common ways to design IIR filters}
 \begin{itemize}
@@ -247,25 +260,6 @@ Generally require a higher order than IIR filters to meet the same specification
     \item Convert the digital filter to a discrete time (DT) filter (From s-domain to z-domain).
     \item You could also just use an optimization algorithm (e.g. least-square method)
 \end{itemize}
-
-\paragraph{Note on standard approximations for IIR filter design:}
-Design method involves directly designing the filter coefficients based on a mathematical representation of the desired frequency response. This approach provides more control over the filter characteristics but requires a deeper understanding of filter design principles. The approximation method involves approximating an ideal frequency response by specifying certain filter characteristics, such as filter type, cutoff frequency, and filter order. The goal is to find a set of filter coefficients that can closely match the desired response. Some of the common approximation methods are Butterworth, Chebyshev, and elliptic filters. 
-
-A rough overview of the common method for approximation entails:
-\begin{itemize}
-    \item Conversion of the digital filter specification to an analog low-pass filter specification
-    \item Determination of analog low-pass transfer function $H_a(s)$
-    \item Transformation of $H_a(s)$ to the desired digital transfer function $G(z)$
-    This method is preferred because:
-    \begin{itemize}
-        \item Approximation of an analog transfer function is well established and suitable.
-        \item Closed expressions for the analog approximation are often obtained.
-        \item Large tables for analog filter design are available.
-        \item In many cases, digital simulation of an analogue system is sought, i.e. the analogue specification exist.
-    \end{itemize}
-\end{itemize}
-
-
 
 \subsubsection{Typical IIR filters}
 When using the approximation method, you have the desired response given as:
@@ -315,10 +309,10 @@ Of the prototype analog filters showcased here, \textbf{Elliptic gives best perf
 
 
 \subsubsection{Common ways to design FIR filters}
-These are the ones mentioned in the lecture notes:
+FIR filter design is often based on a approximation of a specified magnitude response. The design of a FIR filter of order $M-1$ can be found by either the length $M$ impulse response samples in $\{ h(n) \}$ or the $M$ samples of the frequency response in $\{ H(e^{j\omega}) \}$.
 \begin{itemize}
     \item \textbf{Window method:} Multiply the ideal impulse response with a window function to get the desired impulse response.
-    \item \textbf{Frequency sampling method:} Sample the frequeny response (DTFT) of the desired filter by assuming it to be the DFT. Then use the inverse DFT to get the desired coefficients.
+    \item \textbf{Frequency sampling method:} Sample the frequeny response (DTFT) of the desired filter by assuming it to be the DFT. Then use the inverse DFT to get the desired coefficients. This can work well for in the points sampled, but between the points the frequency response can not be controlled.
     \item \textbf{Optimization method:} Use algorithms (e.g. Parks-McClellan) or optimization techniques like least squares to iteratively refine the filter coefficients by minimizing the error between the desired and actual frequency response.
 \end{itemize}
 
