@@ -253,6 +253,54 @@ given a sampling interval T = 1/FT}
 
 \subsection{Frequency analysis and DFT}
 
+\subsubsection{DTFT and its central properties}
+
+\paragraph{Discrete time Fourier transform (DTFT):} The DTFT of a discrete-time signal $x[n]$ is defined as:
+\begin{align}
+    \text{Synthesis equation:} \quad & x[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\omega})e^{j\omega n} d\omega \\
+    \text{Analysis equation:} \quad & X(e^{j\omega}) = \sum_{n=-\infty}^{\infty} x[n]e^{-j\omega n}
+\end{align}
+\begin{itemize}
+    \item $X(e^{j\omega})$ unique ocer the frequency interval ($-\pi,\pi$), or equivalently ($0,2\pi$)
+    \item $X(e^{j\omega})$ is periodic with period $2\pi$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tabular}{|c c c|}
+        \hline
+        Property & Time domain & Frequency domain \\
+        \hline
+        Notation & $x[n]$ & $X(\omega)$ \\
+        & $x_1(n)$ & $X_1(\omega)$ \\
+        & $x_2(n)$ & $X_2(\omega)$ \\
+        Linearity & $ax_1(n) + bx_2(n)$ & $aX_1(\omega) + bX_2(\omega)$ \\
+        Time shifting & $x(n-k)$ & $e^{-j\omega k}X(\omega)$ \\
+        Time reversal & $x(-n)$ & $X(-\omega)$ \\
+        Convolution & $x_1(n) \ast x_2(n)$ & $X_1(\omega)X_2(\omega)$ \\
+        Parseval's theorem & $\sum_{n=-\infty}^{\infty}x(n)y^*(n)$ & $\frac{1}{2\pi}\int_{-\pi}^{\pi}X(\omega)Y^*(\omega)d\omega$ \\
+        \hline
+    \end{tabular}
+    \caption{Properties of DTFT}
+    \label{table:DTFT_properties}
+\end{figure}
+
+\subsubsection{DFT}
+\paragraph{Discrete Fourier transform (DFT):} The DFT of a discrete-time signal $x[n]$ is defined as:
+
+\begin{align}
+    \text{DFT of } N\text{-length signal:} \quad & X(k) = \sum_{n=0}^{N-1} x[n]e^{-j\frac{2\pi}{N}kn} \\
+    \text{Inverse DFT of } N\text{-length signal:}  \quad & x(n) = \frac{1}{N}\sum_{k=0}^{N-1} X(k)e^{j\frac{2\pi}{N}kn}
+\end{align}
+
+\subsubsection{Relationship between DFT and DTFT}
+\subsubsection{The four Fourier transforms}
+\subsubsection{Ideal filters}
+\subsubsection{Example of simple filters}
+\subsubsection{Min/max/mixed phase and inverse system}
+\subsubsection{Circular and linear convolution}
+\subsubsection{Advantages of FFT. The computational complexity to DFT to definition}
+
 \subsection{Filter design}
 
 \subsubsection{Advantages/Disadvantages of FIR and IIR filters}
@@ -512,6 +560,7 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
 
 \clearpage
 \subsubsection{Upsampling and downsampling}
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{figures/Sampling and reconstruction/sampling_examples.png}
