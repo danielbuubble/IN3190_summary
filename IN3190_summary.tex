@@ -327,7 +327,19 @@ If $X(z)$ and $Y(z)$ are the Z-transforms of $x[n]$ and $y[n]$, respectively, th
 \end{align}
 
 \subsubsection{Relationship between DFT and DTFT}
+
+The $N$-point DFT is the spectrum of the DFTF of:
+\begin{equation}
+    \bar{X}(e^{j\omega}) =X(e^{j\omega}) \ast \left( \frac{\sin (\omega L / 2)}{\sin (\omega/2)}e^{-j(L-1)\omega/2} \right) 
+\end{equation}
+Evaluated at the $N$ points given by $\omega_k = \frac{2\pi}{N}k, \quad k=0,1,\ldots,N-1$. I.e. 
+\begin{equation}
+    X(k) = \bar{X}\left( \frac{2\pi}{N}k \right)
+\end{equation}
+
+This means we must have at least as many samples in the frequency domain as we do in the time domain.
 \subsubsection{The four Fourier transforms}
+
 \subsubsection{Ideal filters}
 \subsubsection{Example of simple filters}
 \subsubsection{Min/max/mixed phase and inverse system}
