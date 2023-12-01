@@ -249,7 +249,40 @@ is the convolution of $x(n)$ and $h(n)$
 \subsubsection{Sampling frequency and sampling interval. Digital frequency / physical frequency, as well as
 corresponding digital angular frequency / physical angular frequency and how to map between these
 given a sampling interval T = 1/FT}
+
+\paragraph{Sampling frequency:}
+The sampling frequency or sampling rate, $f_s$ is the average number of samples obtained in one second (samples per second), thus $f_s = 1/T_s$ given in Hz or kHz. To avoid aliasing, the sampling frequency must be greater than twice the maximum frequency of the signal being sampled, according to the Nyquist–Shannon sampling theorem.
+
+\paragraph{Sampling interval:}
+The sampling interval or sampling period, $T_s$ is the time between samples, and is equal to the inverse of the sampling frequency $T_s = 1/f_s$. The sampling interval should be chosen small enough to avoid aliasing, but large enough to get a reasonable signal-to-noise ratio.
+
+\paragraph{Digital frequency:}
+Digital frequency 
+
+\paragraph{Physical frequency:}
+
+
+\paragraph{Digital angular frequency:}
+
+\paragraph{Physical angular frequency:}
+
+
 \subsection{Z-transform}
+
+\subsubsection{Definition and how to derive the various z-transform properties}
+\paragraph{Definition:}
+The Z-transform(z-domain) is a discrete-time equivalent of the Laplace transform(s-domain). It is a linear transformation of a discrete-time signal which maps a complex-valued discrete-time signal $x[n]$ to a complex-valued function of a complex variable $X(z)$.
+
+\subsubsection*{Propterties}
+
+\paragraph{Linearity:}
+If $X(z)$ and $Y(z)$ are the Z-transforms of $x[n]$ and $y[n]$, respectively, then linearity property states that:
+\begin{equation}
+    ax[n] + by[n] \xLeftrightarrow{Z.T}  aX(z) + bY(z)
+\end{equation}
+
+\paragraph{}
+
 
 \subsection{Frequency analysis and DFT}
 
