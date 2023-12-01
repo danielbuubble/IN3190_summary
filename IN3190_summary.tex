@@ -6,7 +6,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{mathtools}
 \usepackage{textcomp}
-\usepackage[english]{babel}
+\usepackage[english, norsk]{babel}
 \usepackage{wrapfig}
 \usepackage{fancyhdr}
 \usepackage{amssymb}
@@ -69,11 +69,11 @@
 \begin{document}
 \title{IN3190 - Exam Preparation Questions H23\\
 {\Large University of Oslo}}
-\author{Daniel Tran}
+\author{Daniel Tran \& Erik Røset}
 \date{November 2023}
 \fancyhead[L]{Should know to exam H23 - IN3190}
 \fancyhead[C]{UiO}
-\fancyhead[R]{Daniel Tran}
+\fancyhead[R]{Daniel Tran \& Erik Røset}
 \cfoot{\thepage\ of \pageref{LastPage}}
 \maketitle
 \hypersetup{linkcolor=black}
@@ -272,16 +272,62 @@ Digital frequency
 \subsubsection{Definition and how to derive the various z-transform properties}
 \paragraph{Definition:}
 The Z-transform(z-domain) is a discrete-time equivalent of the Laplace transform(s-domain). It is a linear transformation of a discrete-time signal which maps a complex-valued discrete-time signal $x[n]$ to a complex-valued function of a complex variable $X(z)$.
+\begin{equation}
+    X(z) = \mathcal{Z}[x[n]] = \sum_{n=-\infty}^{\infty} x[n]z^{-n}
+\end{equation}
 
 \subsubsection*{Propterties}
 
 \paragraph{Linearity:}
-If $X(z)$ and $Y(z)$ are the Z-transforms of $x[n]$ and $y[n]$, respectively, then linearity property states that:
+If $x[n] \xLeftrightarrow{Z.T} X(z)$ and $y[n] \xLeftrightarrow{Z.T} Y(z)$, then linearity property states that:
 \begin{equation}
     ax[n] + by[n] \xLeftrightarrow{Z.T}  aX(z) + bY(z)
 \end{equation}
 
-\paragraph{}
+\paragraph{Time shifting:}
+If $x[n] \xLeftrightarrow{Z.T} X(z)$, then time shifting property states that:
+\begin{equation}
+    x[n-m] \xLeftrightarrow{Z.T} z^{-m}X(z)
+\end{equation}
+
+\paragraph{Time reversal:}
+If $x[n] \xLeftrightarrow{Z.T} X(z)$, then time reversal property states that:
+\begin{equation}
+    x[-n] \xLeftrightarrow{Z.T} X(z^{-1})
+\end{equation}
+
+\paragraph{Scaling in the z-domain:} 
+If $x[n] \xLeftrightarrow{Z.T} X(z)$, then scaling property states that:
+\begin{equation}
+    a^nx[n] \xLeftrightarrow{Z.T} X(a^{-1}z)
+\end{equation}
+for any constant $a$, real or complex.
+
+\paragraph{Differentiation in the z-domain:}
+If $x[n] \xLeftrightarrow{Z.T} X(z)$, then differentiation property states that:
+\begin{equation}
+    x[n] \xLeftrightarrow{Z.T} \left [-z\frac{dX(z)}{dz} \right ]^k
+\end{equation}
+
+\paragraph{Convolution of two sequences:} 
+If $x[n] \xLeftrightarrow{Z.T} X(z)$ and $y[n] \xLeftrightarrow{Z.T} Y(z)$, then convolution property states that:
+\begin{equation}
+    x[n] \ast y[n] \xLeftrightarrow{Z.T} X(z)Y(z)
+\end{equation}
+
+\subsubsection{Region of convergence (ROC)}
+The region of convergence, known is ROC, is important to understand because it defines the region where the z-transform exist.
+\begin{equation}
+    ROC = \left \{z:\left|\sum_{n=-\infty}^{\infty}x[n]z^{-n} \right| < \infty \right \}
+\end{equation}
+\begin{itemize}
+    \item ROC cannot contain any poles
+    \item From ROC, a system is causal if goes to $\infty$
+    \item If the ROC contains the unit circle, then the system is stable.
+\end{itemize}
+
+\subsubsection{Poles/zeroes as well as the connection to stability/causality/symmetry/real signals/frequency response/filter type/linear phase etc}
+
 
 
 \subsection{Frequency analysis and DFT}
