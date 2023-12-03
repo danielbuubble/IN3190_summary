@@ -256,15 +256,13 @@ The sampling frequency or sampling rate, $f_s$ is the average number of samples 
 \paragraph{Sampling interval:}
 The sampling interval or sampling period, $T_s$ is the time between samples, and is equal to the inverse of the sampling frequency $T_s = 1/f_s$. The sampling interval should be chosen small enough to avoid aliasing, but large enough to get a reasonable signal-to-noise ratio.
 
-\paragraph{Digital frequency:}
-Digital frequency 
+\paragraph{Physical Frequency} $F[Hz]$
 
-\paragraph{Physical frequency:}
+\paragraph{Physical angular frequency} $\Omega = 2\pi F [rad]$
 
+\paragraph{Digital(Normalized) angular frequency} $\omega = \frac{\Omega}{F_T} =  \frac{2\pi F}{F_T} [rad/sample]$
 
-\paragraph{Digital angular frequency:}
-
-\paragraph{Physical angular frequency:}
+\paragraph{Mapping} $\frac{F}{F_T}$ or $\frac{\Omega}{F_T}$, this is the digital frequency
 
 
 \subsection{Z-transform}
@@ -322,12 +320,73 @@ The region of convergence, known is ROC, is important to understand because it d
 \end{equation}
 \begin{itemize}
     \item ROC cannot contain any poles
-    \item From ROC, a system is causal if goes to $\infty$
+    \item ROC tells us if the system is causal and/or stable
+    \item From ROC, a system is causal if it goes to $\infty$
     \item If the ROC contains the unit circle, then the system is stable.
 \end{itemize}
 
 \subsubsection{Poles/zeroes as well as the connection to stability/causality/symmetry/real signals/frequency response/filter type/linear phase etc}
+The poles and zeros from a system is obtained by finding the roots of the transfer functions denominator and numerator respectivily.  $H(s) = \frac{Numerator}{Denominator} = \frac{zeros}{poles}$. The position of the poles can tell us if the system is stable and/or causal. If we also know the position to the zeroes, we can get the mangnitude and phase response of the system. And fram that we can get the filter type and linear phase.
+\\
+A FIR filter has a perfect linear phase. This means that the phase response of the filter is a linear function of frequency.
 
+\subsubsection{Calculation of H(z) from difference equation and from filter structures}
+\paragraph{From difference equation:} 
+\begin{equation}
+    H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{k=0}^{M}b_kz^{-k}}{\sum_{k=0}^{N}a_kz^{-k} }= \frac{\mathcal{Z}\{y(n)\}}{\mathcal{Z}\{x(n)\}}
+\end{equation}
+where $x(n)$ is the input and $y(n)$ is the output. And $X(z)$ and $Y(z)$ is the z-transform of $x(n)$ and $y(n)$ respectivily. 
+
+\subsubsection{Connection between z-transform and DTFT and the associated relationship between $H(z)$ and $H(\omega)$}
+
+\paragraph{Z-transform} $\mathcal{Z}[x(n)] = X(z) = \sum_{n=-\infty}^{\infty}x(n)z^{-n}$ where z is a complex variable given by $z = re^{j\omega}$
+\paragraph{DTFT} $F[x(n)] = X(\omega) = \sum_{n=-\infty}^{\infty}x(n)e^{-j\omega n}$
+
+\paragraph{Relationship between $H(z)$ and $H(\omega)$:} $\mathcal{Z}[x(n)] = F[x(n)r^{-n}]$
+\begin{itemize}
+    \item Z-transform is a generalization of the DTFT
+    \item Z-transform is valid for all types of signal (periodic, increasing, decreasing, etc.)
+    \item DTFT is valid only for signals that are absolutely summable or has finite energy
+\end{itemize}
+
+\clearpage
+\subsubsection{The magnitude of $H(\omega)$ from a pole-zero diagram}
+Poles in the PZ-plot will make the magnitude rise, while the zero will make the magnitude fall. 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Z-transform/PZ_magnitude_exam1.png}
+    \caption{Pole-zero diagram and corresponding magnitude response exam 1}
+    \label{fig:pole_zero_diagram_exam1}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/Z-transform/PZ_magnitude_exam2.png}
+    \caption{Pole-zero diagram and corresponding magnitude response exam 2}
+    \label{fig:pole_zero_diagram_exam2}
+\end{figure}
+
+\clearpage
+\subsubsection{Inverse Z-transfrom and approaches that can be used to calculate it}
+There are four approcahes to calculate the inverse Z-transform:
+\begin{enumerate}
+    \item \textbf{Using table:} 
+    \begin{itemize}
+        \item This is a simple and preferred solution
+        \item Should always be considered
+        \item Remember the ROC and it's implications
+    \end{itemize}
+    \item \textbf{Cauchy's countour integral (difficult):}
+    \begin{itemize}
+        \item It is possible to calculate the inverse Z-transfrom by
+        \begin{equation}
+            x(n) = \mathcal{Z}^{-1}\{X(z)\} = \frac{1}{2\pi j} \oint_C X(z)z^{n-1}dz
+        \end{equation}
+        i. e. integrate a long a closed curve in the ROX, where the curve envelops the origin.
+        \item This is a difficult method, and should only be used if the other methods are not possible.
+    \end{itemize}
+    \item \textbf{Power series expansion}
+    \item \textbf{Partial fraction expansion}
+\end{enumerate}
 
 \subsection{Frequency analysis and DFT}
 
@@ -352,6 +411,7 @@ The region of convergence, known is ROC, is important to understand because it d
         Notation & $x[n]$ & $X(\omega)$ \\
         & $x_1(n)$ & $X_1(\omega)$ \\
         & $x_2(n)$ & $X_2(\omega)$ \\
+        \\
         Linearity & $ax_1(n) + bx_2(n)$ & $aX_1(\omega) + bX_2(\omega)$ \\
         Time shifting & $x(n-k)$ & $e^{-j\omega k}X(\omega)$ \\
         Time reversal & $x(-n)$ & $X(-\omega)$ \\
@@ -733,5 +793,6 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
     \item Three ways to see if it is causal, ROC or difference equation
     \item From ROC, it is causal if it contains infinity
     \item For n<0, if h(n) (Impulse response) have a postive value, it it anti-causal.
+    \item For the DTFT to exists, the unit cicle must lie inside the ROC
 \end{itemize}
 \end{document}
