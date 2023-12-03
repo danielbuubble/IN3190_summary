@@ -433,7 +433,6 @@ There are four approcahes to calculate the inverse Z-transform:
 
 \subsubsection{Relationship between DFT and DTFT}
 \subsubsection{The four Fourier transforms}
-    \centering
 \subsubsection{Ideal filters}
 \subsubsection{Example of simple filters}
 \subsubsection{Min/max/mixed phase and inverse system}
@@ -443,7 +442,12 @@ There are four approcahes to calculate the inverse Z-transform:
     x[n] \circledast h[n] \xleftrightarrow{DFT} X[k]H[k]
 \end{equation}
 \begin{itemize}
-    \item Circular convolution is essentially the same process as linear convolution, 
+    \item Circular convolution is essentially the same process as linear convolution. However, in circular convolution, the signals are all periodic.
+    \item In circular convolution, both the sequences (input and impulse response) must be of equal sizes. They must have the same number of samples. Thus the output of a circular convolution has the same number of samples as the two inputs. If the two signals are not of equal sizes, then the convolution is only possible after modifying the signals with a method known as zero-padding
+    \begin{itemize}
+        \item \textbf{Zero-padding:} Zero-padding is a technique which can be used to equalize the lengths of two signals in order to perform circular convolution. It is done by adding zeros to the end of the shorter signal until it is the same length as the longer signal.
+    \end{itemize}
+    \item The output of a circular convolution is always periodic, and its period is specified by the length of the input sequences.
 \end{itemize}
 
 \subsubsection{Advantages of FFT. The computational complexity to DFT to definition}
