@@ -424,7 +424,6 @@ There are four approcahes to calculate the inverse Z-transform:
 \end{figure}
 
 \subsubsection{DFT}
-The DFT converts a finitue sequence of equally-spaced samples of a function into a same-length sequence of equally-spaced samples of the discrete-time Fourier transform (DTFT). The DTFT is the sampled Fourier transform of the function $x(n)$, and is itself a periodic summation of the Fourier transform of the function $x(n)$.
 \paragraph{Discrete Fourier transform (DFT):} The DFT of a discrete-time signal $x[n]$ is defined as:
 
 \begin{align}
@@ -433,77 +432,19 @@ The DFT converts a finitue sequence of equally-spaced samples of a function into
 \end{align}
 
 \subsubsection{Relationship between DFT and DTFT}
-
-\begin{align}
-    \begin{matrix}
-        \textcolor{red}{\text{DFT:}} & X(k) = \textcolor{red}{\sum_{n=0}^{N-1}} x(n)e^{-j\textcolor{red}{\frac{2\pi k}{N}}n} & x(n) = \frac{1}{N}\textcolor{red}{\sum_{k=0}^{N-1}}X(k)e^{j\textcolor{red}{\frac{2\pi K}{N}}n} \\ \\
-        \textcolor{red}{\text{DTFT:}} & \tilde{X}^(e^{j\omega}) = \textcolor{red}{\sum_{n=-\infty}^{\infty}} x(n)e^{-j\textcolor{red}{\omega} n} & x(n) = \frac{1}{2\pi}\textcolor{red}{\int_{0}^{2\pi}}\tilde{X}(e^{j\omega})e^{jpl \textcolor{red}{\omega} n} d\omega
-    \end{matrix}
-\end{align}
-
-Using $\omega = \frac{2\pi k}{N}$ and $x(n)$ is a finite discrete sequence of length $N$, or $x(n)$ is one period of a periodic discrete sequence of length $N$, the the DFT and DTFT are \textbf{exactly equal}. Else the DFT is just a approximation of the DTFT.
-
 \subsubsection{The four Fourier transforms}
-\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/DFT/fourier_reps.png}
-    \caption{The four Fourier transforms}
-    \label{fig:furry_transforms}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{CTFS} Continiuous and periodic in the time domain, discrete inn the Fourier domain.
-    \item \textbf{CTFT} Fourier transfrom for continuous time non-periodic signals.
-    \item \textbf{DTFS} Discrete and periodic in the time domain, discrete and periodic in the Fourier domain.
-    \item \textbf{DTFT} Fourier transform for discrete time non-periodic signals.
-\end{itemize}
-
-\clearpage
-
 \subsubsection{Ideal filters}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.3\textwidth]{figures/DFT/ideal_filters.png}
-    \caption{Ideal filters}
-    \label{fig:ideal_filters}
-\end{figure}
-
+\subsubsection{Example of simple filters}
 \subsubsection{Min/max/mixed phase and inverse system}
-
-\paragraph{Min phase:}
-\begin{itemize}
-    \item A minimum phase system has a minimized phase responsne for a given magnitude response.
-    \item The system has the minimum possible group delay for a given magnitude response. This means the system responds to changes in frequecy as quickly as possible.
-    \item Practically, min. phase systems are often associated with systems that are causal and stable.
-    \item \textbf{FIR systems} has all zeros within the unit circle, \textbf{IIR systems} has all poles and zeros within the unit circle.
-\end{itemize}
-
-\paragraph{Max phase:}
-\begin{itemize}
-    \item A maximum phase system has a maximized phase response for a given magnitude response.
-    \item The system has the maximum possible group delay for a given magnitude response. This means the system responds to changes in frequency as slowly as possible.
-    \item \textbf{FIR systems} All zeros outside the unit circle, \textbf{IIR systems} All zeros outside the unit circle and all poles inside the unit circle. (I.e. stable and causal.)
-\end{itemize}
-
-\paragraph{Mixed phase:}
-\begin{itemize}
-    \item Has min. and max. components.
-    \item This mean the system can exhibit characteristics from both types, depending on frequency.
-\end{itemize}
-
-\paragraph{Inverse system:}
-Inverse system are designed to reverse the effect of a system. This type of systems can be made by cascadin
- Some consequenses of inverse systems are:
-\begin{itemize}
-    \item Poles in $H(<)$
-\end{itemize}
-
 \subsubsection{Circular and linear convolution}
 \paragraph{Circular convolution:}
 \begin{equation}
     x[n] \circledast h[n] \xleftrightarrow{DFT} X[k]H[k]
 \end{equation}
+\begin{itemize}
+    \item Circular convolution is essentially the same process as linear convolution, 
+\end{itemize}
 
 \subsubsection{Advantages of FFT. The computational complexity to DFT to definition}
 
