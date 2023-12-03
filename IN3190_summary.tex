@@ -498,11 +498,21 @@ Using $\omega = \frac{2\pi k}{N}$ and $x(n)$ is a finite discrete sequence of le
 \end{itemize}
 
 \paragraph{Inverse system:}
-Inverse system are designed to reverse the effect of a system. This type of systems can be made by cascadin
+Inverse system are designed to reverse the effect of a system. This type of systems can be suggest by cascasding a system with its inverse will reverse the output back to the input.
  Some consequenses of inverse systems are:
 \begin{itemize}
-    \item Poles in $H()$
+    \item \textbf{FIR:} $H_1(z) = B(z)$, then $H_2(z)=H_1^{-1}(z) = \frac{1}{B(z)}$ I.e. IIR
+    \item \textbf{IIR:} $H_1(z) = \frac{1}{A(z)}$, then $H_2(z)=H_1^{-1}(z) = A(z)$ I.e. FIR 
+    \item \textbf{IIR:} $H_1(z) = \frac{B(z)}{A(z)}$, then $H_2(z) = H_1^{-1} = \frac{A(z)}{B(z)}$ I.e. IIR
 \end{itemize}
+
+\paragraph{Consequences:}
+\begin{itemize}
+    \item Poles in $H_1(z)$ become zeros in $H_2(z)$ and vice versa.
+    \item The ROC of an inverse system is determined by the requirement that $H_1(z)$ and $H_2(z)$ must have overlapping ROC.
+    \item $H_2(z)$ does not need to end up being stable or implementable. (Unstable and non-causal)
+    \item $H_2(e^{j\omega})$ is not necessarily existing.
+\end{itemize} 
 
 \subsubsection{Circular and linear convolution}
 \paragraph{Circular convolution:}
@@ -520,6 +530,7 @@ Inverse system are designed to reverse the effect of a system. This type of syst
 
 \subsubsection{Advantages of FFT. The computational complexity to DFT to definition}
 
+The DFT requires $N^2$ operations to compute $N$. The FFT requires $N \log_2 N$ operations for the same results.
 \subsection{Filter design}
 
 \subsubsection{Advantages/Disadvantages of FIR and IIR filters}
