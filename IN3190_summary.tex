@@ -798,6 +798,12 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
     \label{fig:sampling_example}
 \end{figure}
 
+ By upsampling or downsampling we can obtain a new sampled signal with a different sampling frequency.
+ We call the new sampled signal $x_0 = x_c(nT_0)$ which is different from the `normal' sampled signal $x(n) = x_c(nT)$.
+
+\paragraph{Downsampling:} $T_0 = DT$ where $D$ is an integer. This is called decimation
+
+\paragraph{Upsampling:} $T_0 = \frac{T}{I}$ where $I$ is an integer. This is called interpolation.
 \section{Additional Topics}
 \subsection{Discrete time}
 \subsubsection{Symmetrical signals}
@@ -811,8 +817,40 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
 \subsection{Frequency analysis and DFT}
 
 \subsection{Filter design}
+\subsubsection{Difference between linear phase and generalized linear phase}
+Linear phase systems has a perfectly linear phase response across all frequencies. Generalized linear phase system has a linear phase response, or a approximately linear phase response, in a specified range of frequencies. The latter provides more design flexibility but may give some undesired effects in some ranges of frequencies.
+
+\subsubsection{Type I-IV linear phase filters}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Filter design/filter_types.png}
+    \caption{The different FIR filters}
+    \label{fig:filter_types}
+\end{figure}
+
+\subsubsection{Mapping between s- and z-plane}
+$H(z) = H_a(s) \Big|_{s=m(z)}$
+
+Where $s=m(z)$ is the mapping function with the following properties:
+\begin{itemize}
+    \item $j\Omega$-axis should be mapped to the unit circle.
+    \item Points in the left-half s-plane should be mapped inside the unit circle.
+    \item $m(z)$ should be rational so a rational $H_a(s)$ can be mapped to a rational $H(z)$.
+\end{itemize} 
+
+\subsubsection{Bi-linear transformation when designing IIR filters}
+Mapping from s-plane to z-plane is defined as $s = \frac{2}{T_s}\frac{1-z^{-1}}{1+z^{-1}} \rightarrow H(z)= H_a \left( \frac{1-z^{-1}}{1 + z^{-1}} \right)$.
+
+This mapping is rational, one-to-one and onto, but the nonlinear relations between the $j\Omega$-axis and the unit circle causes warping.
+
+\subsubsection{Result of warping}
+Bi-linear mapping will only preserve the magnitude response of analog filter that have an idea response that is piecewise constant.
 
 \subsection{Sampling and reconstruction}
+\subsubsection{Up/downsampling with factor that is not an integrer:}
+This is done by resampling with the non-integrer factor $I/D$. I.e we upsample with $I$ and then downsample with $D$. 
+
 
 \paragraph{Notes from group session:}
 \begin{itemize}
