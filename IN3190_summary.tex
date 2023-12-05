@@ -808,7 +808,53 @@ This gives the ideal: $X_r (j\Omega) = X_a (j\Omega)$ \\ (Reconstructed Fourier 
 \subsection{Discrete time}
 \subsubsection{Symmetrical signals}
 
+\paragraph{Symmetrical signal:} A real-valued signal $x(n)$ is said to be symmetric (even) if it satisfies the condition:
+\begin{equation}
+    x(-n) = x(n)
+\end{equation} 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Discrete time/symmetric_signal.png}
+    \caption{Example of a symmetrical signal}
+    \label{fig:symmetrical_signal}
+\end{figure}
+
+\paragraph{Anti-symmetrical signal:} A real-valued signal $x(n)$ is said to be antisymmetric (odd) if it follows the condition:
+\begin{equation}
+    x(-n) = -x(n)
+\end{equation} 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Discrete time/asymmetric_signal.png}
+    \caption{Example of a anit-symmetrical signal}
+    \label{fig:antisymmetrical_signal}
+\end{figure}
+
+\subsubsection{Signal energy}
+The total energy of a signal $x(n)$, real or complex, is defined as: 
+\begin{equation}
+    E_s = \sum_{n=-\infty}^{\infty} |x(n)|^2
+\end{equation}
+Energy when talking about signal processing is not, stricly speaking, thesame as  the conventional energy in physics and other sciences. The two concepts are, however, closely related, and it is possible to convert from one to the other:
+\begin{equation}
+    E = \frac{E_s}{Z} = \frac{1}{Z}\int_{-\infty}^{\infty} |x(t)|^2 dt
+\end{equation}
+where $Z$ represents the magnitude, in appropriate units of measure, of the load driven by the signal.
+\\
+For example, if $x(t)$ represents the potential (in volts$[V]$) of an electrical signal propagating across a transmission line, then Z would represent the characteristic impedance (in ohms$[\Omega]$) of the transmission line.
+\subsubsection{Signal effect}
+???
 \subsection{LTI systems and characteristics}
+
+\subsubsection{Static / dynamic systems}
+\paragraph{Static system:} A system whose output is due to to present input alone is known as static system. The static system is also called the memoryless system. Can be thought of as a purely resistive electrical circuit.
+
+\paragraph{Dynamic system:} A system whose output depens upon the past or future inputs addition to the present input is called the dynamic system. The dynamic system is also known as memory system. Can be thought of as a reactive electrical circuit (Inductors/Capacitors).
+
+\subsubsection{Recursive / non-recursive}
+\paragraph{Recursive:} A system is said to be recursive if the system depends on present and past inputs, as well as previous outputs. I.e. the output of the system is fed back into the system. (IIR Filter)
+
+\paragraph{Non-recursive:} A system is said to be non-recursive if the system current output does not depend on previous output. (FIR Filter)
 
 \subsection{Convolution and correlation}
 
