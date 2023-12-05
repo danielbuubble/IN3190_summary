@@ -857,6 +857,18 @@ For example, if $x(t)$ represents the potential (in volts$[V]$) of an electrical
 \paragraph{Non-recursive:} A system is said to be non-recursive if the system current output does not depend on previous output. (FIR Filter)
 
 \subsection{Convolution and correlation}
+\subsubsection{Correlation}
+Correlation is a measure of similarity between two signals. The general formula for correlation is:
+\begin{equation}
+    \int_{-\infty}^{\infty}x_1(t)x_2(t-\tau)dt
+\end{equation}
+There are two types of correlation:
+\begin{itemize}
+    \item \textbf{Auto correlation}: It is defiend as a correlation of a signal with itself. Auto correlation function is a measure of similarity between a signal and its time delayed version.
+    \item \textbf{Cros correlation}: It is the measure of similarity between two different signals.
+\end{itemize}
+
+\subsubsection{Strategies for convolution evaluation(direct / graphic / . . . )}
 
 \subsection{Z-transform}
 
